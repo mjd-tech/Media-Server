@@ -40,11 +40,32 @@ ExecStart=/usr/bin/x11vnc -xkb -auth guess -forever -loop -noxdamage -repeat -rf
 [Install]
 WantedBy=multi-user.target
 ```
+
 Enable the service:
 ```
 sudo systemctl enable x11vnc.service
 sudo systemctl daemon-reload
 ```
+
+Note:  
+Once the box was set up the way I wanted,  
+I decided I didn't want x11vnc running all the time.  
+Kodi changes the display settings to best match the currently playing video,  
+and this causes problems with x11vnc.  
+I stopped and disabled x11vnc from running at boot:  
+```
+sudo systemctl stop x11vnc.service 
+sudo systemctl disable x11vnc.service
+sudo systemctl daemon-reload
+```
+
+To start x11vnc:
+- make sure you're **not playing a video in Kodi**. Ok if Kodi is just showing the menu.
+- ssh into the the device and run `sudo systemctl start x11vnc`
+- connect with vnc client, do what you need to do.
+- **Do not** start playing a video in Kodi
+- close the vnc client and run `sudo systemctl stop x11vnc`
+- how to check x11vnc status: `systemctl status x11vnc`
 
 ## Static IP address
 - configure a static IP address for the ethernet port, using gui tool.
