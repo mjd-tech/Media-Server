@@ -19,7 +19,7 @@ If you use different values, **Substitute YOUR values** in the following command
 sudo mkdir /mnt/usb1
 
 # Edit /etc/fstab as root, and add at the end:
-LABEL=mediasrv1  /mnt/usb1  auto  defaults,noatime,nofail,x-systemd.device-timeout=1ms 0 2
+LABEL=mediasrv1  /mnt/usb1  auto  defaults,noatime,nofail,x-systemd.device-timeout=15 0 2
 
 # Mount the usb drive
 sudo mount -a
@@ -33,6 +33,8 @@ chmod 777 /mnt/usb1
 ```
 
 NOTE:
+- x-systemd.device-timeout: this defaults to 90 seconds (too long). 
+- 15 sec should be long enough for drive to spin up. adjust if needed.
 - Do NOT chown or chmod /mnt/usb1 if the drive is not mounted.
 - This won't do anything useful.
 - The mount point's properties disappear when something is mounted to it, and is replaced with the
