@@ -58,3 +58,22 @@ networks:
 - when you create a Jellyfin library for tv shows,
 go in settings and move TheTVDB to top of each list.
 - continue to configure Jellyfin. see https://jellyfin.org/docs/
+
+Note: if you have home movies, or any videos that are not listed in themoviedb.org or
+thetvdb.com, create a "Photos" library and put these videos in there.
+"Photos" should be named something like "Photos and home movies"
+
+Note2: in hindsite it would be better to have a directory structure like this on usb1
+```
+media
+- movies
+- tv
+- photos
+- music
+- myvideos
+```
+And set the "stack" volume mapping to simply
+
+`- /mnt/usb1/media:/data/media`
+
+It's totally unnecessary to have all those mappings.
