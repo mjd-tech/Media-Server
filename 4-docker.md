@@ -54,9 +54,12 @@ Note: we add port 9000 so we can access via http rather than https.
 
 ```
 docker volume create portainer_data
-docker run -d -p 8000:8000 -p 9443:9443 -p 9000:9000 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+docker run -d -p 8000:8000 -p 9443:9443 -p 9000:9000 --name portainer --restart=always \
+-v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+```
 
-# Verify
+Verify
+```
 docker ps
 # CONTAINER ID   IMAGE                          COMMAND                  CREATED       STATUS      PORTS                                                                                  NAMES             
 # de6b38eb2fa9   portainer/portainer-ce:latest  "/portainer"             2 weeks ago   Up 9 days   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 0.0.0.0:9443->9443/tcp, :::9443->9443/tcp   portainer
@@ -68,7 +71,7 @@ docker ps
 
 ## Reverse Proxy Network
 - Need this if you want Jellyfin accessible from internet.
-- In Portainer, go to Networks and add new network `reverse_proxy`, with default settings
+- In Portainer, go to Networks and add new network `rev_proxy`, with default settings
 
 ## Containers
 These are the containers we use.
