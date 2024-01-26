@@ -57,8 +57,9 @@ docker volume create portainer_data
 docker run -d -p 8000:8000 -p 9443:9443 -p 9000:9000 --name portainer --restart=always \
 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 ```
+Note: the `docker run` command may need sudo, even though you are a member of the docker group.
 
-Verify
+Verify that Portainer is running
 ```
 docker ps
 # CONTAINER ID   IMAGE                          COMMAND                  CREATED       STATUS      PORTS                                                                                  NAMES             
@@ -68,7 +69,7 @@ docker ps
 - Portainer wants a 12 char password.
 - give it one, log in, go to Settings...Authentication...Move slider to 8 characters
 - Then, can go to Users...admin...Change user password
-
+  
 ## Reverse Proxy Network
 - Need this if you want Jellyfin accessible from internet.
 - In Portainer, go to Networks and add new network `rev_proxy`, with default settings
