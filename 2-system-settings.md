@@ -57,6 +57,9 @@ sudo cat /sys/kernel/debug/dri/0/gt/uc/huc_info
 ```
 
 ## Intel Video driver
+
+> Don't do this section unless you have "judder" problems
+
 - by default, the xorg "modesetting" driver is used
 - this produces "judder" in Kodi, frames are occasionally dropped.
 - see [Kodi 19.4 on Xubuntu J4125 24p judder](https://forum.kodi.tv/showthread.php?tid=367862&pid=3094414)
